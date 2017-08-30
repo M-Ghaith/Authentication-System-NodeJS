@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    title nodeAuth
+    // Bootstrap core CSS
+    link(href='../stylesheets/bootstrap.css', rel='stylesheet')
+    link(href='../stylesheets/style.css', rel='stylesheet')
+  body
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+      a.navbar-brand(href='#') Auth porject
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarsExampleDefault.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+
+          li(class=(title == 'Members' ? 'active': ''))
+           if user
+            a.nav-link(href='/')
+              | Members 
+              span.sr-only (current)
+          if !user
+           li(class=(title == 'Register' ? 'active': ''))
+            a.nav-link(href='/users/register') Register
+           li(class=(title == 'Login' ? 'active': ''))
+            a.nav-link(href='/users/login') Login
+        ul.nav.navbar-nav.nvabar-right
+         if user
+          li.nav-item.active
+            a.nav-link(href='/users/logout') Logout
+    .container
+     != messages()
+     block content
+    hr
+    footer
+     p(class='text-center') © Company 2017
